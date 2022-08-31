@@ -5,6 +5,7 @@ class Program
 {
     static async Task Main(string[] args)
     {
+
         ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
         var file = new FileInfo(fileName: @"C:\Users\Abbosjon\Desktop\Sample.xlsx");
 
@@ -49,7 +50,7 @@ class Program
     {
         DeleteIfExists(file);
 
-        using var package = new ExcelPackage(file);
+        var package = new ExcelPackage(file);
         var ws = package.Workbook.Worksheets.Add(Name: "MainReport");
         var range = ws.Cells[Address: "A2"].LoadFromCollection(people, PrintHeaders: true);
         range.AutoFitColumns();
